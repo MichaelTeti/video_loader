@@ -1,5 +1,5 @@
 docker pull michaelteti/video
-'''
+```
 Args:
             data_dir (str): The path to the folder containing either video files
                 or other folders containing video files. os.walk is used to
@@ -39,4 +39,4 @@ Args:
                 False to keep them as the original sizes. Default False.
             resize_dir (str): Directory to put the resized videos in if
                 resize_vids is True. Default is None.
-'''
+```
