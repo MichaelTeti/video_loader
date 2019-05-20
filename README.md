@@ -1,1 +1,42 @@
 docker pull michaelteti/video
+'''
+Args:
+            data_dir (str): The path to the folder containing either video files
+                or other folders containing video files. os.walk is used to
+                travel down starting at this path.
+            exclude_dirs (list of strings): Whether to exclude certain folder
+                names when walking down the file system. Can be full names or
+                part of a name. Default is None, which will not exclude any
+                folder.
+            exclude_files (list of strings): Whether to exclude any file names
+                when traversing down the file system. Can be full names or part of
+                a name, such as an extension. Default is None, which will not
+                exclude any files based on name.
+            horiz_flip (bool): Whether to randomly flip some frames across the
+                y-axis. Default is False.
+            normalize (bool): Whether or not to normalize each video's frames
+                so that their pixel values are in the range [0, 1]. Default is
+                True.
+            device_id (int): Indicates which GPU device to load the videos onto.
+                Default is device 0.
+            save_fnames (bool): True to save filenames in a .csv file for faster
+                loading or False to use os.walk() to find them again. Default
+                False.
+            n_frames (int >= 1): Number of consecutive video frames to stack
+                together to construct a single training example. Default is 1,
+                which means a single frame.
+            crop_ht (int >= 0): height to crop each image to. Default 224. If
+                crop_ht is 0, no cropping will be performed.
+            crop_wd (int): width to crop each image to. Default 224. If crop_wd
+                is 0, no cropping will be performed.
+            center_crop (bool): True to crop at center of frames, False to
+                perform random crops. Default False.
+            downsample_t (int >= 1): How much to downsample in time. Default is
+                1, which means no downsampling.
+            batch_size (int >= 0): Batch size for each training iteration.
+                Default is 32 examples / iteration.
+            resize_vids (bool): True to resize videos to a smaller size first,
+                False to keep them as the original sizes. Default False.
+            resize_dir (str): Directory to put the resized videos in if
+                resize_vids is True. Default is None.
+'''
