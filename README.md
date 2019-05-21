@@ -1,4 +1,5 @@
-docker pull michaelteti/video
+This is a utility intended to be used to load videos in as batches to an arbitrary PyTorch model. It is based off of the [pynvvl library](https://github.com/mitmul/pynvvl), so you will need to install this. Also, if you want to use the resize option with GPU support, you will need to install [NVIDIA's video codec sdk](https://developer.nvidia.com/nvidia-video-codec-sdk). If you don't want to do this, you can pull my docker image, michaelteti/video, which as everything already installed. Below are the arguments to the video loader, and you can find an example of how to use it during training if you go to [example.py](https://github.com/MichaelTeti/video_loader/blob/master/example.py).
+
 ```
 Args:
             data_dir (str): The path to the folder containing either video files
@@ -41,7 +42,7 @@ Args:
                 resize_vids is True. Default is None.
 ```
 
-Must have a file called params.json in the directory you run the main script from. This params.json file should look something like this (still working on model params):
+You must have a file called **params.json** in the directory you run the main script from. This **params.json** file should look something like this (still working on model params):
 
 ```
 {
