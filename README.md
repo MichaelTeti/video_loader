@@ -68,3 +68,9 @@ You must have a file called **params.json** in the directory you run the main sc
     }
 }
 ```
+
+To be able to import the video.py file, either put the video.py file in the directory your main script will run in or append the path to the video.py file in your **~/.bashrc file**. For example, in the docker image, the **~/.bashrc** file contains a line at the end that says 
+```
+export PYTHONPATH=$PYTHONPATH:/home/DataUtils
+```
+because I have my video.py script in the /home/DataUtils folder. You will need to change that to the path where your folder is that contains the video.py script.
