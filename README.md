@@ -73,4 +73,8 @@ To be able to import the video.py file, either put the video.py file in the dire
 ```
 export PYTHONPATH=$PYTHONPATH:/home/DataUtils
 ```
-because I have my video.py script in the /home/DataUtils folder. You will need to change that to the path where your folder is that contains the video.py script.
+because I have my video.py script in the /home/DataUtils folder. You will need to change that to the path where your folder is that contains the video.py script, and, once that is done, run 
+
+```
+source ~/.bashrc
+```
