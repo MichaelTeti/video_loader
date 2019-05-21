@@ -41,7 +41,7 @@ Args:
                 resize_vids is True. Default is None.
 ```
 
-Must have a file called params.json in the directory you run the main script from. This params.json file should look something like this:
+Must have a file called params.json in the directory you run the main script from. This params.json file should look something like this (still working on model params):
 
 ```
 {
