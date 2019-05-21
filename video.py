@@ -70,7 +70,7 @@ class VideoUtil:
         self.exclude_dirs = exclude_dirs
         self.exclude_files = exclude_files
         self.save_fnames = save_fnames
-        self.filenames = self.get_file_names()
+        self.filenames, self.classes = self.get_file_names()
 
         self.horiz_flip = horiz_flip
         self.normalize = normalize
@@ -164,8 +164,10 @@ class VideoUtil:
                             csvwriter = csv.writer(csvfile, delimiter=',')
                             csvwriter.writerow([os.path.join(root, file)])
 
-        print('[INFO] Found {} valid files.'.format(len(filenames)))
-        return filenames
+        classes = set([os.path.split(os.path.split(f)[0])[1] for f in filenames])
+        print('[INFO] Found {} valid files from {} classes.'.format(len(filenames),
+                                                                    len(classes)))
+        return filenames, list(classes)
 
 
 
@@ -257,15 +259,17 @@ class VideoUtil:
 
     def load_vid(self):
         vid_ind = np.random.randint(0, len(self.filenames), 1)[0]
+        vid_fname = self.filenames[vid_ind]
+        label = [i for i in range(len(self.classes)) if self.classes[i] in vid_fname][0]
 
         try:
             loader = NVVL(device_id=0, log_level='error')
-            vid = loader.read_sequence(self.filenames[vid_ind],
+            vid = loader.read_sequence(vid_fname,
                                       horiz_flip=self.horiz_flip,
                                       normalized=self.normalize)
         except:
             loader = NVVL(device_id=0, log_level='error')
-            vid = loader.read_sequence(self.filenames[vid_ind],
+            vid = loader.read_sequence(vid_fname,
                                       horiz_flip=self.horiz_flip,
                                       normalized=self.normalize,
                                       count=200)
@@ -279,7 +283,7 @@ class VideoUtil:
         self.batch_num = 0
         self.n_batches = vid.shape[0] // self.frames_need
 
-        return self.crop(vid)
+        return self.crop(vid), label
 
 
 
