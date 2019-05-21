@@ -40,3 +40,30 @@ Args:
             resize_dir (str): Directory to put the resized videos in if
                 resize_vids is True. Default is None.
 ```
+
+Must have a file called params.json in the directory you run the main script from. This params.json file should look something like this:
+
+```
+{
+    "model_params": {
+        "test": "test"
+    },
+    "video_loading_params": {
+        "crop_wd": 256,
+        "horiz_flip": true,
+        "save_fnames": false,
+        "downsample_t": 2,
+        "resize_vids": false,
+        "n_frames": 5,
+        "crop_ht": 256,
+        "batch_size": 32,
+        "normalize": true,
+        "device_id": 0,
+        "center_crop": true,
+        "exclude_dirs": ["raw", "images"],
+        "resize_dir": "/dataset/dataset_mod/originals_resized",
+        "data_path": "/dataset/dataset_mod/originals_resized",
+        "exclude_files": null
+    }
+}
+```
